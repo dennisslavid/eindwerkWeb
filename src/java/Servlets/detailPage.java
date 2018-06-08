@@ -5,11 +5,8 @@
  */
 package Servlets;
 
-import services.InternshipEJB;
 import DAL.Internship;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,12 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import services.InternshipEJB;
 
 /**
  *
  * @author denni
  */
-public class index extends HttpServlet {
+public class detailPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +36,11 @@ public class index extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Internship> allInternships = internshipService.getAllInternships();
+        int internshipId = Integer.parseInt(request.getParameter("id"));
+        Internship requestedInternship = internshipService.getInternshipById(internshipId);
         HttpSession session = request.getSession();
-        session.setAttribute("allInternships", allInternships);
-        RequestDispatcher rd = request.getRequestDispatcher("landingPage.jsp");
+        session.setAttribute("requestedInternship", requestedInternship);
+        RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
         rd.forward(request, response);
     }
 

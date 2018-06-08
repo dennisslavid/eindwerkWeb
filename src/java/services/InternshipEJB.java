@@ -23,4 +23,9 @@ public class InternshipEJB {
         resultList = query.getResultList();
         return resultList;
     }
+    
+    public Internship getInternshipById(int id) {
+        Internship result = em.find(Internship.class, id);
+        return result;
+    }
 }

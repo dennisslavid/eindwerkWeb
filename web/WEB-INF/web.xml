@@ -4,9 +4,17 @@
         <servlet-name>index</servlet-name>
         <servlet-class>Servlets.index</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>detailPage</servlet-name>
+        <servlet-class>Servlets.detailPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detailPage</servlet-name>
+        <url-pattern>/detailPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
