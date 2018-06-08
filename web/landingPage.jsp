@@ -4,6 +4,8 @@
     Author     : denni
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="DAL.Internship"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +15,12 @@
     </head>
     <body>
         <h1>Ik ben op de fucking landingsPage.jsp</h1>
+        <%
+            List<Internship> allInternships = (List)session.getAttribute("allInternships");
+            Internship eersteIntern = allInternships.get(1);
+            String eersteTitel = eersteIntern.getTitle();
+        %>
+        <h2>De eerste internship die ik vind is <%= eersteTitel %> bitches :)</h2>
+        
     </body>
 </html>

@@ -5,7 +5,11 @@
  */
 package Servlets;
 
+import Beans.InternshipEJB;
+import DAL.Internship;
 import java.io.IOException;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +32,15 @@ public class index extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @EJB
+    InternshipEJB internshipService;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<Internship> allInternships = internshipService.getAllInternships();
+        HttpSession session = request.getSession();
+        session.setAttribute("allInternships", allInternships);
+        
         RequestDispatcher rd = request.getRequestDispatcher("landingPage.jsp");
         rd.forward(request, response);
     }
