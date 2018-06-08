@@ -5,9 +5,10 @@
  */
 package Servlets;
 
-import Beans.InternshipEJB;
+import services.InternshipEJB;
 import DAL.Internship;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
