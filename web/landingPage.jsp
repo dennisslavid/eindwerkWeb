@@ -26,10 +26,12 @@
         String buttonText = "Submit";
         String srchPlaceholder = "Search";
         String formAction = "searchInternship";
+        String disabler = "";
         if(hasSearched.equals("true")) {
             buttonText = "Clear";
             srchPlaceholder = searchQuery;
             formAction = "index";
+            disabler = " disabled";
         }
         
     %>
@@ -39,7 +41,7 @@
         </div>
         <form class="navbar-form navbar-right form-right-top-margin" method="POST" action="<%= formAction %>">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="<%= srchPlaceholder %>" name="searchQuery">
+                <input type="text" class="form-control" placeholder="<%= srchPlaceholder %>" name="searchQuery"<%= disabler %>>
             </div>
             <button type="submit" class="btn btn-default"><%= buttonText %></button>
         </form>
@@ -48,9 +50,9 @@
             <table class="table table-hover table-custom-marged">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Organisation</th>
-                        <th>Start Date</th>
+                        <th class="col-lg-3">Title</th>
+                        <th class="col-lg-3">Organisation</th>
+                        <th class="col-lg-6">Start Date</th>
                     </tr>
                 </thead>
                 <tbody class="finger-point">

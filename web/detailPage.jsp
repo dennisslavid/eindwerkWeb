@@ -47,8 +47,8 @@
                         <td colspan="2" class="table-subtitle-row"><h3>Organisation</h3></td>
                     </tr>
                     <tr>
-                        <td>Name:</td>
-                        <td><%= OrgName %></td>
+                        <td class="col-lg-2">Name:</td>
+                        <td class="col-lg-10"><%= OrgName %></td>
                     </tr>
                     <tr>
                         <td>Street + N°:</td>
