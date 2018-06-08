@@ -19,12 +19,14 @@ public class InternshipEJB {
     
     public List<Internship> getAllInternships() {
         List<Internship> resultList;
+        em.getEntityManagerFactory().getCache().evictAll();
         Query query = em.createNamedQuery("Internship.findAll");
         resultList = query.getResultList();
         return resultList;
     }
     
     public Internship getInternshipById(int id) {
+        em.getEntityManagerFactory().getCache().evictAll();
         Internship result = em.find(Internship.class, id);
         return result;
     }

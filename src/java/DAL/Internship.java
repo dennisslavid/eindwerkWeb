@@ -2,6 +2,7 @@ package DAL;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.ejb.Startup;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author denni
  */
 @Entity
+@Startup
 @Table(name = "internship")
 @XmlRootElement
 @NamedQueries({
