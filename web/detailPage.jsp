@@ -24,7 +24,7 @@
             Internship current = (Internship)session.getAttribute("requestedInternship");
             String currentTitle = current.getTitle();
             String currentDescription = current.getDescription();
-            Date currentStartDate = current.getStartDate();
+            String currentStartDate = current.getDateAsString();
             Organisation currentOrg = current.getOrganisationID();
             String OrgName = currentOrg.getName();
             String OrgStreet = currentOrg.getStreetAddress();
@@ -44,7 +44,7 @@
             <table class="table table-striped table-custom-marged">
                 <tbody>
                     <tr>
-                        <td colspan="2"><h3>Organisation</h3></td>
+                        <td colspan="2" class="table-subtitle-row"><h3>Organisation</h3></td>
                     </tr>
                     <tr>
                         <td>Name:</td>
@@ -67,7 +67,7 @@
                         <td><%= OrgEmail %></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h3>Internship</h3></td>
+                        <td colspan="2" class="table-subtitle-row"><h3>Internship</h3></td>
                     </tr>
                     <tr>
                         <td>Title:</td>

@@ -1,6 +1,7 @@
 package services;
 
 import DAL.Internship;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,6 +29,18 @@ public class InternshipEJB {
     public Internship getInternshipById(int id) {
         em.getEntityManagerFactory().getCache().evictAll();
         Internship result = em.find(Internship.class, id);
+        return result;
+    }
+    
+    public List<Internship> searchInternships(String searchQuery) {
+        List<Internship> all = this.getAllInternships();
+        List<Internship> result = new ArrayList<>();
+        all.forEach((i) -> {
+            String searchable = i.toSearchableString();
+            if (searchable.contains(searchQuery.toLowerCase())) {
+                result.add(i);
+            }
+        });
         return result;
     }
 }

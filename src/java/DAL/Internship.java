@@ -1,6 +1,8 @@
 package DAL;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ejb.Startup;
 import javax.persistence.Basic;
@@ -114,6 +116,21 @@ public class Internship implements Serializable {
 
     public void setOrganisationID(Organisation organisationID) {
         this.organisationID = organisationID;
+    }
+    
+    public String toSearchableString() {
+        Organisation org = this.getOrganisationID();
+        String formattedDate = this.getDateAsString();
+        String result = this.getTitle() + formattedDate + org.getName() 
+                + org.getCity() + org.getZipCode();
+        return result.toLowerCase();
+    }
+    
+    public String getDateAsString() {
+        String stringifiedDate;
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        stringifiedDate = formatter.format(this.startDate);
+        return stringifiedDate;
     }
 
     @Override

@@ -5,10 +5,8 @@
  */
 package Servlets;
 
-import services.InternshipEJB;
 import DAL.Internship;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -17,12 +15,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import services.InternshipEJB;
 
 /**
  *
  * @author denni
  */
-public class index extends HttpServlet {
+public class searchInternship extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +32,22 @@ public class index extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @EJB
-    InternshipEJB internshipService;
     
+   @EJB
+   InternshipEJB internshipService;
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String hasSearched = "false";
-        List<Internship> allInternships = internshipService.getAllInternships();
+        String searchQuery = (String)request.getParameter("searchQuery");
+        if(!searchQuery.equals("")) {
+            hasSearched = "true";
+        }
+        List<Internship> searchResults = internshipService.searchInternships(searchQuery);
         HttpSession session = request.getSession();
-        session.setAttribute("allInternships", allInternships);
+        session.setAttribute("allInternships", searchResults);
         session.setAttribute("hasSearched", hasSearched);
+        session.setAttribute("searchQuery", searchQuery);
         RequestDispatcher rd = request.getRequestDispatcher("landingPage.jsp");
         rd.forward(request, response);
     }

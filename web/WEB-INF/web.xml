@@ -8,6 +8,10 @@
         <servlet-name>detailPage</servlet-name>
         <servlet-class>Servlets.detailPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchInternship</servlet-name>
+        <servlet-class>Servlets.searchInternship</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>detailPage</servlet-name>
         <url-pattern>/detailPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchInternship</servlet-name>
+        <url-pattern>/searchInternship</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
