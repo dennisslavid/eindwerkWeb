@@ -19,7 +19,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Internship Details</title>
     </head>
-    <body class="body-padded">
+    <body class="body-unpadded">
         <% 
             Internship current = (Internship)session.getAttribute("requestedInternship");
             String currentTitle = current.getTitle();
@@ -33,15 +33,15 @@
             String OrgContact = currentOrg.getContactPerson();
             String OrgEmail = currentOrg.getEmail();
         %>
-        <div class ="page-header">
+        <div class ="page-header page-header-custom">
             <h1>Internship Finder <small>Internship details</small></h1>
         </div>
         <div>
-            <button class="btn btn-success">
+            <button class="btn btn-success left-margined" onclick="document.location='index';">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Return to overview
             </button>
-            <table class="table table-striped table-top-marged">
+            <table class="table table-striped table-custom-marged">
                 <tbody>
                     <tr>
                         <td colspan="2"><h3>Organisation</h3></td>

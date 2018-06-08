@@ -19,12 +19,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Internship Finder</title>
     </head>
-    <body class="body-padded">
-        <div class ="page-header">
+    <body class="body-unpadded">
+        <div class ="page-header page-header-custom">
             <h1>Internship Finder <small>Find the right internship for you</small></h1>
+            <form class="navbar-form navbar-right right-top-margin">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
         <div>
-            <table class="table table-hover">
+            <table class="table table-hover table-custom-marged">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -32,7 +38,7 @@
                         <th>Start Date</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="finger-point">
                     <c:forEach items="${allInternships}" var="internship">
                         <tr onclick="document.location='detailPage?id=${internship.id}';">
                             <td>${internship.title}</td>
