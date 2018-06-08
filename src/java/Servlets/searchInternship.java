@@ -48,12 +48,7 @@ public class searchInternship extends HttpServlet {
         session.setAttribute("allInternships", searchResults);
         session.setAttribute("hasSearched", hasSearched);
         session.setAttribute("searchQuery", searchQuery);
-        RequestDispatcher rd;
-        if(hasSearched.equals("true")) {
-             rd = request.getRequestDispatcher("landingPage.jsp");
-        } else {
-            rd = request.getRequestDispatcher("index.java");
-        }
+        RequestDispatcher rd = request.getRequestDispatcher("landingPage.jsp");
         rd.forward(request, response);
     }
 
