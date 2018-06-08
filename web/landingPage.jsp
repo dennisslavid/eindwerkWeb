@@ -25,22 +25,25 @@
         String searchQuery = (String)session.getAttribute("searchQuery");
         String buttonText = "Submit";
         String srchPlaceholder = "Search";
+        String formAction = "searchInternship";
         if(hasSearched.equals("true")) {
             buttonText = "Clear";
             srchPlaceholder = searchQuery;
+            formAction = "index";
         }
         
     %>
     <body class="body-unpadded">
         <div class ="page-header page-header-custom">
             <h1>Internship Finder <small>Find the right internship for you</small></h1>
-            <form class="navbar-form navbar-right right-top-margin" method="POST" action="searchInternship">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="<%= srchPlaceholder %>" name="searchQuery">
-                </div>
-                <button type="submit" class="btn btn-default"><%= buttonText %></button>
-            </form>
         </div>
+        <form class="navbar-form navbar-right form-right-top-margin" method="POST" action="<%= formAction %>">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="<%= srchPlaceholder %>" name="searchQuery">
+            </div>
+            <button type="submit" class="btn btn-default"><%= buttonText %></button>
+        </form>
+    
         <div>
             <table class="table table-hover table-custom-marged">
                 <thead>

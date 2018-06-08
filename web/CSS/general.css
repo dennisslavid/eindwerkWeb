@@ -2,6 +2,7 @@
     background-color: #253959;
     color: white;
     margin-top: 0px;
+    margin-bottom: 10px;
     padding-top: 10px;
     padding-left: 15px;
 }
@@ -25,10 +26,10 @@
 
 .left-margined {
     margin-left: 10px;
-}
+}   
 
-.right-top-margin {
-    margin-top : 15px;
+.form-right-top-margin {
+    margin-top : 10px;
     margin-right: 10px;
 }
 
