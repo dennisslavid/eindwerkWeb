@@ -24,7 +24,7 @@
     cursor : pointer;
 }
 
-.left-margined {
+.button-left-margined {
     margin-left: 10px;
 }   
 
@@ -35,4 +35,9 @@
 
 .table-subtitle-row {
     background-color: #93c6c2
+}
+
+#button-shortlist {
+    margin-right: 35px;
+    float: right;
 }

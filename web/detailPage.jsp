@@ -37,9 +37,13 @@
             <h1>Internship Finder <small>Internship details</small></h1>
         </div>
         <div>
-            <button class="btn btn-success left-margined" onclick="document.location='index';">
+            <button class="btn btn-success button-left-margined" onclick="document.location='index';">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Return to overview
+            </button>
+            <button class="btn btn-primary button-left-margined" onclick="document.location='addToShortlist?id=${requestedInternship.id}';">
+                <span class="glyphicon glyphicon-pushpin"></span>
+                Add to shortlist
             </button>
             <table class="table table-striped table-custom-marged">
                 <tbody>

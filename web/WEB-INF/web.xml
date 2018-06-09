@@ -12,6 +12,14 @@
         <servlet-name>searchInternship</servlet-name>
         <servlet-class>Servlets.searchInternship</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addToShortlist</servlet-name>
+        <servlet-class>Servlets.addToShortlist</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getShortlist</servlet-name>
+        <servlet-class>Servlets.getShortlist</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>searchInternship</servlet-name>
         <url-pattern>/searchInternship</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addToShortlist</servlet-name>
+        <url-pattern>/addToShortlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getShortlist</servlet-name>
+        <url-pattern>/getShortlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

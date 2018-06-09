@@ -1,14 +1,10 @@
 <%-- 
-    Document   : landingPage
-    Created on : 8-jun-2018, 8:24:09
+    Document   : shortlistPage
+    Created on : 9-jun-2018, 14:28:07
     Author     : denni
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.util.List"%>
-<%@page import="DAL.Internship"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,41 +14,19 @@
         <link rel="stylesheet" type="text/css" href="CSS/general.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>Internship Finder</title>
+        <title>My shortlist</title>
     </head>
-    <% 
-        String hasSearched = (String)session.getAttribute("hasSearched");
-        String searchQuery = (String)session.getAttribute("searchQuery");
-        String buttonText = "Submit";
-        String srchPlaceholder = "Search";
-        String formAction = "searchInternship";
-        String disabler = "";
-        if(hasSearched.equals("true")) {
-            buttonText = "Clear";
-            srchPlaceholder = searchQuery;
-            formAction = "index";
-            disabler = " disabled";
-        }
-        
-    %>
     <body class="body-unpadded">
         <div class ="page-header page-header-custom">            
             <h1>
                 Internship Finder
-                <small>Find the right internship for you</small>
-                <button class="btn btn-primary" id="button-shortlist" onclick="document.location='getShortlist';">
-                    <span class="glyphicon glyphicon-list-alt"></span>
-                    My Shortlist
-                </button>            
+                <small>My shortlist</small>           
             </h1>            
         </div>
-        <form class="navbar-form navbar-right form-right-top-margin" method="POST" action="<%= formAction %>">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="<%= srchPlaceholder %>" name="searchQuery"<%= disabler %>>
-            </div>
-            <button type="submit" class="btn btn-default"><%= buttonText %></button>
-        </form>
-    
+        <button class="btn btn-success button-left-margined" onclick="document.location='index';">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Return to overview
+        </button>
         <div>
             <table class="table table-hover table-custom-marged">
                 <thead>
@@ -63,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody class="finger-point">
-                    <c:forEach items="${allInternships}" var="internship">
+                    <c:forEach items="${shortlist}" var="internship">
                         <tr onclick="document.location='detailPage?id=${internship.id}';">
                             <td>${internship.title}</td>
                             <td>${internship.organisationID.name}</td>
@@ -73,6 +47,5 @@
                 </tbody>
             </table>
         </div>
-        
     </body>
 </html>
