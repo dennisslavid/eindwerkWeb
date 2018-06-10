@@ -14,7 +14,7 @@
     </servlet>
     <servlet>
         <servlet-name>addToShortlist</servlet-name>
-        <servlet-class>Servlets.addToShortlist</servlet-class>
+        <servlet-class>Servlets.AddToShortlist</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>getShortlist</servlet-name>

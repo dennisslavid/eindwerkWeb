@@ -40,7 +40,7 @@
             <h1>
                 Internship Finder
                 <small>Find the right internship for you</small>
-                <button class="btn btn-primary" id="button-shortlist" onclick="document.location='getShortlist';">
+                <button class="btn btn-primary" id="button-shortlist" onclick="document.location='addToShortlist';">
                     <span class="glyphicon glyphicon-list-alt"></span>
                     My Shortlist
                 </button>            

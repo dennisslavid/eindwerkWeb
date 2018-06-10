@@ -41,10 +41,10 @@
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Return to overview
             </button>
-            <form method="POST" action="ToShortlist">
-                <button class="btn btn-primary button-left-margined" onclick="document.location='addToShortlist?id=${requestedInternship.id}';">
+            <form method="POST" action="addToShortlist">
+                <button class="btn btn-primary button-left-margined">
                     <span class="glyphicon glyphicon-pushpin"></span>
-                    Add to shortlist
+                    Add to My shortlist
                 </button>
             </form>
             <table class="table table-striped table-custom-marged">

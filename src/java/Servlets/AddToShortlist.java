@@ -17,7 +17,7 @@ import services.ShortlistEJB;
  *
  * @author denni
  */
-public class addToShortlist extends HttpServlet {
+public class AddToShortlist extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,9 +35,6 @@ public class addToShortlist extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int internshipId = Integer.parseInt(request.getParameter("id"));
-        Internship internshipToAdd = internshipService.getInternshipById(internshipId);
-        shortlistService.addToShortlist(internshipToAdd);
         List<Internship> shoortlist = shortlistService.getShortlist();
         HttpSession session = request.getSession();
         session.setAttribute("shortlist", shoortlist);
@@ -71,6 +68,9 @@ public class addToShortlist extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Internship current = (Internship)session.getAttribute("requestedInternship");
+        shortlistService.addToShortlist(current);
         processRequest(request, response);
     }
 
