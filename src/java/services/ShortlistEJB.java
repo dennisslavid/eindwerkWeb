@@ -28,4 +28,8 @@ public class ShortlistEJB {
     public boolean containsInternship(final int id){
         return shortlist.stream().filter(o -> o.getId().equals(id)).findFirst().isPresent();
     }
+    
+    public void removeFromShortlist(int index) {
+        shortlist.remove(index);
+    }
 }

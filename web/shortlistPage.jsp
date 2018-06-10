@@ -39,7 +39,8 @@
                     <tr>
                         <th class="col-lg-3">Title</th>
                         <th class="col-lg-3">Organisation</th>
-                        <th class="col-lg-6">Start Date</th>
+                        <th class="col-lg-5">Start Date</th>
+                        <th class="col-lg-1"></th>
                     </tr>
                 </thead>
                 <tbody class="finger-point">
@@ -48,6 +49,13 @@
                             <td>${internship.title}</td>
                             <td>${internship.organisationID.name}</td>
                             <td><fmt:formatDate value="${internship.startDate}" pattern="dd/MM/yyyy" /></td>
+                            <td>
+                                <form action="addToShortlist" method ="POST">
+                                    <button class="btn btn-default" type="submit" name="action" value="delete">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
