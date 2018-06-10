@@ -23,12 +23,12 @@
     <% 
         String hasSearched = (String)session.getAttribute("hasSearched");
         String searchQuery = (String)session.getAttribute("searchQuery");
-        String buttonText = "Submit";
+        String gliphyCss = "glyphicon glyphicon-search";
         String srchPlaceholder = "Search";
         String formAction = "searchInternship";
         String disabler = "";
         if(hasSearched.equals("true")) {
-            buttonText = "Clear";
+            gliphyCss = "glyphicon glyphicon-remove";
             srchPlaceholder = searchQuery;
             formAction = "index";
             disabler = " disabled";
@@ -50,7 +50,7 @@
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="<%= srchPlaceholder %>" name="searchQuery"<%= disabler %>>
             </div>
-            <button type="submit" class="btn btn-default"><%= buttonText %></button>
+            <button type="submit" class="btn btn-default"><span class="<%= gliphyCss %>"></span></button>
         </form>
     
         <div>

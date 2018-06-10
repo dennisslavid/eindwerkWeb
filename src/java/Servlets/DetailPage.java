@@ -1,9 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Servlets;
 
 import DAL.Internship;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,13 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.ShortlistEJB;
+import services.InternshipEJB;
 
 /**
  *
  * @author denni
  */
-public class getShortlist extends HttpServlet {
+public class DetailPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,12 +32,15 @@ public class getShortlist extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @EJB
-    ShortlistEJB shortlistService;
+    InternshipEJB internshipService;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher rd = request.getRequestDispatcher("shortlistPage.jsp");
+        int internshipId = Integer.parseInt(request.getParameter("id"));
+        Internship requestedInternship = internshipService.getInternshipById(internshipId);
+        HttpSession session = request.getSession();
+        session.setAttribute("requestedInternship", requestedInternship);
+        RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
         rd.forward(request, response);
     }
 

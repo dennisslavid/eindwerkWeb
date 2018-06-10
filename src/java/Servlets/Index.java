@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servlets;
 
+import services.InternshipEJB;
 import DAL.Internship;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,13 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.InternshipEJB;
+import services.ShortlistEJB;
 
 /**
  *
  * @author denni
  */
-public class detailPage extends HttpServlet {
+public class Index extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,14 +30,17 @@ public class detailPage extends HttpServlet {
      */
     @EJB
     InternshipEJB internshipService;
+    @EJB
+    ShortlistEJB shortlistService;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int internshipId = Integer.parseInt(request.getParameter("id"));
-        Internship requestedInternship = internshipService.getInternshipById(internshipId);
+        String hasSearched = "false";
+        List<Internship> allInternships = internshipService.getAllInternships();
         HttpSession session = request.getSession();
-        session.setAttribute("requestedInternship", requestedInternship);
-        RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
+        session.setAttribute("allInternships", allInternships);
+        session.setAttribute("hasSearched", hasSearched);
+        RequestDispatcher rd = request.getRequestDispatcher("landingPage.jsp");
         rd.forward(request, response);
     }
 

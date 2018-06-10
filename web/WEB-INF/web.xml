@@ -2,23 +2,19 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>index</servlet-name>
-        <servlet-class>Servlets.index</servlet-class>
+        <servlet-class>Servlets.Index</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>detailPage</servlet-name>
-        <servlet-class>Servlets.detailPage</servlet-class>
+        <servlet-class>Servlets.DetailPage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>searchInternship</servlet-name>
-        <servlet-class>Servlets.searchInternship</servlet-class>
+        <servlet-class>Servlets.SearchInternship</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addToShortlist</servlet-name>
         <servlet-class>Servlets.AddToShortlist</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>getShortlist</servlet-name>
-        <servlet-class>Servlets.getShortlist</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
@@ -35,10 +31,6 @@
     <servlet-mapping>
         <servlet-name>addToShortlist</servlet-name>
         <url-pattern>/addToShortlist</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>getShortlist</servlet-name>
-        <url-pattern>/getShortlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -12,7 +12,7 @@ import javax.ejb.StatefulTimeout;
  * @author denni
  */
 @Stateful
-@StatefulTimeout(value = 1, unit = TimeUnit.HOURS)
+@StatefulTimeout(value = 5, unit = TimeUnit.MINUTES)
 public class ShortlistEJB {
     
     private final List<Internship> shortlist = new ArrayList<>();

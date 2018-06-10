@@ -21,7 +21,7 @@ import services.InternshipEJB;
  *
  * @author denni
  */
-public class searchInternship extends HttpServlet {
+public class SearchInternship extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
