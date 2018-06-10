@@ -9,6 +9,8 @@
 <%@page import="java.util.List"%>
 <%@page import="DAL.Internship"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,26 +43,13 @@
                     </tr>
                 </thead>
                 <tbody class="finger-point">
-                    <% 
-                        List<Internship> shortlist = (List)session.getAttribute("shortlist");
-                        if(shortlist != null) {
-                            for(Internship i : shortlist) {
-                                int id = i.getId();
-                                String title = i.getTitle();
-                                Organisation org = i.getOrganisationID();
-                                String orgName = org.getName();
-                                String startDate = i.getDateAsString();
-                                
-                        %>
-                        <tr onclick="document.location='detailPage?id=<%= id %>';">
-                            <td><%= title %></td>
-                            <td><%= orgName %></td>
-                            <td><%= startDate %></td>
+                    <c:forEach items="${shortlist}" var="internship">
+                        <tr onclick="document.location='detailPage?id=${internship.id}';">
+                            <td>${internship.title}</td>
+                            <td>${internship.organisationID.name}</td>
+                            <td><fmt:formatDate value="${internship.startDate}" pattern="dd/MM/yyyy" /></td>
                         </tr>
-                        <%
-                            }
-                        }
-                    %>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

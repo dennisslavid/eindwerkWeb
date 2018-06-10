@@ -35,9 +35,9 @@ public class AddToShortlist extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Internship> shoortlist = shortlistService.getShortlist();
+        List<Internship> shortlist = shortlistService.getShortlist();
         HttpSession session = request.getSession();
-        session.setAttribute("shortlist", shoortlist);
+        session.setAttribute("shortlist", shortlist);
         RequestDispatcher rd = request.getRequestDispatcher("shortlistPage.jsp");
         rd.forward(request, response);
     }
