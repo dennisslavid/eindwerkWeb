@@ -3,22 +3,25 @@ package services;
 import DAL.Internship;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.ejb.Stateful;
+import javax.ejb.StatefulTimeout;
 
 /**
  *
  * @author denni
  */
 @Stateful
+@StatefulTimeout(value = 1, unit = TimeUnit.HOURS)
 public class ShortlistEJB {
     
-    private final ArrayList shortlist = new ArrayList<>();
+    private final List<Internship> shortlist = new ArrayList<>();
     
     public List<Internship> getShortlist() {
-        return this.shortlist;
+        return shortlist;
     }
     
     public void addToShortlist(Internship internship) {
-        this.shortlist.add(internship);
+        shortlist.add(internship);
     }
 }

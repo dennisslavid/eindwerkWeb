@@ -2,6 +2,7 @@ package Servlets;
 
 import DAL.Internship;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +38,10 @@ public class addToShortlist extends HttpServlet {
         int internshipId = Integer.parseInt(request.getParameter("id"));
         Internship internshipToAdd = internshipService.getInternshipById(internshipId);
         shortlistService.addToShortlist(internshipToAdd);
-        RequestDispatcher rd = request.getRequestDispatcher("landingPage.jsp");
+        List<Internship> shoortlist = shortlistService.getShortlist();
+        HttpSession session = request.getSession();
+        session.setAttribute("shortlist", shoortlist);
+        RequestDispatcher rd = request.getRequestDispatcher("shortlistPage.jsp");
         rd.forward(request, response);
     }
 

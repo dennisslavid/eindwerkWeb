@@ -2,6 +2,7 @@ package Servlets;
 
 import DAL.Internship;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -33,9 +34,6 @@ public class getShortlist extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<Internship> shortlist = shortlistService.getShortlist();
-        HttpSession session = request.getSession();
-        session.setAttribute("shortlist", shortlist);
         RequestDispatcher rd = request.getRequestDispatcher("shortlistPage.jsp");
         rd.forward(request, response);
     }

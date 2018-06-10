@@ -8,7 +8,6 @@ package Servlets;
 import services.InternshipEJB;
 import DAL.Internship;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import services.ShortlistEJB;
 
 /**
  *
@@ -35,6 +35,8 @@ public class index extends HttpServlet {
      */
     @EJB
     InternshipEJB internshipService;
+    @EJB
+    ShortlistEJB shortlistService;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

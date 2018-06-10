@@ -4,6 +4,10 @@
     Author     : denni
 --%>
 
+<%@page import="java.util.Date"%>
+<%@page import="DAL.Organisation"%>
+<%@page import="java.util.List"%>
+<%@page import="DAL.Internship"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,13 +41,26 @@
                     </tr>
                 </thead>
                 <tbody class="finger-point">
-                    <c:forEach items="${shortlist}" var="internship">
-                        <tr onclick="document.location='detailPage?id=${internship.id}';">
-                            <td>${internship.title}</td>
-                            <td>${internship.organisationID.name}</td>
-                            <td><fmt:formatDate value="${internship.startDate}" pattern="dd/MM/yyyy" /></td>
+                    <% 
+                        List<Internship> shortlist = (List)session.getAttribute("shortlist");
+                        if(shortlist != null) {
+                            for(Internship i : shortlist) {
+                                int id = i.getId();
+                                String title = i.getTitle();
+                                Organisation org = i.getOrganisationID();
+                                String orgName = org.getName();
+                                String startDate = i.getDateAsString();
+                                
+                        %>
+                        <tr onclick="document.location='detailPage?id=<%= id %>';">
+                            <td><%= title %></td>
+                            <td><%= orgName %></td>
+                            <td><%= startDate %></td>
                         </tr>
-                    </c:forEach>
+                        <%
+                            }
+                        }
+                    %>
                 </tbody>
             </table>
         </div>
