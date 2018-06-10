@@ -24,4 +24,8 @@ public class ShortlistEJB {
     public void addToShortlist(Internship internship) {
         shortlist.add(internship);
     }
+    
+    public boolean containsInternship(final int id){
+        return shortlist.stream().filter(o -> o.getId().equals(id)).findFirst().isPresent();
+    }
 }

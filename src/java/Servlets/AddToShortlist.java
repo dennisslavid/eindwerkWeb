@@ -70,7 +70,9 @@ public class AddToShortlist extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Internship current = (Internship)session.getAttribute("requestedInternship");
-        shortlistService.addToShortlist(current);
+        if(!shortlistService.containsInternship(current.getId())) {
+            shortlistService.addToShortlist(current);
+        }
         processRequest(request, response);
     }
 
