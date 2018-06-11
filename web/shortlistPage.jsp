@@ -51,7 +51,7 @@
                             <td><fmt:formatDate value="${internship.startDate}" pattern="dd/MM/yyyy" /></td>
                             <td>
                                 <form action="addToShortlist" method ="POST">
-                                    <button class="btn btn-default" type="submit" name="action" value="delete">
+                                    <button class="btn btn-default" type="submit" name="deleteId" value="${internship.id}">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </form>

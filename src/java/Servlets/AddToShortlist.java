@@ -70,11 +70,13 @@ public class AddToShortlist extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Internship current = (Internship)session.getAttribute("requestedInternship");
-        if("delete".equals(request.getParameter("action"))) {
+        int deleteId = 0;
+        if(request.getParameter("deleteId") != null) {
+            deleteId = Integer.parseInt(request.getParameter("deleteId"));
             List<Internship> shortlist = shortlistService.getShortlist();
-            int indexToRemove = 999999;
+            int indexToRemove = 0;
             for (Internship i : shortlist) {
-                if(current.getId() == i.getId()) {
+                if(deleteId == i.getId()) {
                     indexToRemove = shortlist.indexOf(i);
                 }
             }
